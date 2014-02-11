@@ -20,7 +20,7 @@ $navvi-breakpoint:0;
 	.#{$class} {
 		position: relative;
 		input[type='checkbox'] { display:none; }
-		label { cursor: pointer;  /* user select */ }
+		label { cursor: pointer; }
 		label.burger:before {
 			content:'☰';
 		}
@@ -34,7 +34,7 @@ $navvi-breakpoint:0;
 		/* Narrow */
 		@media screen and (min-width: 0) and (max-width: $navvi-breakpoint) {
 			ul { overflow:scroll; max-height: 0; visibility: hidden; }
-			input[type='checkbox']:checked ~ ul { max-height: 500px; visibility: visible;}
+			input[type='checkbox']:checked + label + ul { max-height: none; visibility: visible;}
 		}
 
 		@content;
@@ -58,6 +58,15 @@ $navvi-breakpoint:0;
 
 
 
+
+
+
+
+
+
+
+
+
 @mixin navvi-generate($class:'navvi', $breakpoint:400px, $align:left, $bgColor:#444, $fontColor:#eaeaea, $borderRadius:3px) {
 
 
@@ -66,15 +75,11 @@ $navvi-breakpoint:0;
 
 
 	@include navvi($class, $breakpoint) {
-		
-		@include user-select;
 
 		label {
 			background: $bgColor;
 			padding: .4em .5em .2em .5em;
 			line-height: 1;
-
-			@include border-radius($borderRadius);
 
 			&:before {
 				font-size:1.2em;
@@ -94,10 +99,8 @@ $navvi-breakpoint:0;
 					display:block;
 					padding: .4em .5em .2em .5em;
 					background: $bgColor;
-
-					@include transition(all .2s);
-
 					color: $cMixB;
+
 					&:hover {
 						background: $cMixA;
 						color: $fontColor;
@@ -106,37 +109,24 @@ $navvi-breakpoint:0;
 			}
 		}
 
+
+
+
+
 		
 		@include navvi-wide {
 			ul {
 				
-				@if $align == right {
-					text-align: right;
-				}
-				@if $align == center {
-					text-align: center;
-				}
+				@if $align == right { text-align: right; }
+				@if $align == center { text-align: center; }
 
 				
 				li {
 					display: inline-block;
 					
-
-					@if $align == left {
-						margin-right: .1em;
-					} 
-					@if $align == right {
-						margin-left: .1em;
-					}
-					@if $align == center {
-						margin: 0 .05em;
-					}
-					
-					
-
-					a {
-						@include border-radius($borderRadius);
-					}
+					@if $align == left { margin-right: .1em; } 
+					@if $align == right { margin-left: .1em; }
+					@if $align == center { margin: 0 .05em; }
 				}
 			}
 		}
@@ -147,20 +137,11 @@ $navvi-breakpoint:0;
 
 		@include navvi-narrow {
 			
-			@if $align == right {
-					text-align: right;
-				}
-				@if $align == center {
-					text-align: center;
-				}
+			@if $align == right { text-align: right; }
+				@if $align == center { text-align: center; }
 
 			ul {
-				@include border-radius($borderRadius);
-				@include box-shadow(0 0 .5em 0 rgba($cMixB, .4));
-
-				margin-top: .2em;
 				position: absolute;
-				
 				width:100%;
 				text-align: left;
 
@@ -185,17 +166,18 @@ $navvi-breakpoint:0;
 			}
 
 			label {
-				display: inline-block;
+				display: block;
 				color: $cMixB;
-				margin-bottom: .2em;
+				
 				&:hover {
 					color: $fontColor;
 				}
 			}
 
-			input:checked ~ label {
+			input:checked + label {
 				color:$fontColor;
 				background: $cMixA;
+				border-bottom: 1px solid $cMixB;
 			}
 		}
 
@@ -206,8 +188,6 @@ $navvi-breakpoint:0;
 		@content;
 
 	}
-
-
 
 }
 
