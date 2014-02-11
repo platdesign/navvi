@@ -1,19 +1,8 @@
-// Creates the class 'navvi'
-@include navvi(navvi, 500px) {
-	
-	// Styles for wide and narrow media
-	ul {
-
-	}
-
-	// Styles for wide media (> 500px)
-	@include navvi-wide {
-
-	}
-
-	// Styles for narrow media (< 500px)
-	@include navvi-narrow {
-	
-	}
-
-}
+/* Creates the styles for Navvi with
+ * Class: navvi
+ * Breakpoint: 400px
+ * Align: right
+ * Background: #3f7d9f
+ * Font-Color: #fff
+*/
+@include navvi-generate(navvi, 400px, right, #3f7d9f, #fff);

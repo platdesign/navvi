@@ -162,88 +162,14 @@ nav.tabs {
 hr {
 	margin: 2em 0;
 }
-
-
-
-@include navvi(navvi, 400px) {
-	margin-top: 1em;
-	@include user-select;
-
-	label {
-		background: mix(white, $ci-color, 20%);
-		padding: .1em .5em .3em .5em;
-		@include border-radius(3px);
-		&:before {
-			font-size:1.4em;
-		}
-	}
-
-	ul {
-
-		li {
-			a {
-				display:block;
-				padding: .4em .5em .3em .5em;
-				background: mix(white, $ci-color, 70%);
-
-				@include transition(all .2s);
-
-				color: mix(white, $ci-color, 10%);
-				&:hover {
-					background: mix(white, $ci-color, 30%);
-					color: mix(white, $ci-color, 90%);
-				}
-			}
-		}
-	}
-
-	@include navvi-narrow {
-		
-
-		ul {
-			@include border-radius(3px);
-			@include box-shadow(0 0 13px 0 rgba(white, .4));
-
-			margin-top: .2em;
-			position: absolute;
-			
-			width:100%;
-			text-align: left;
-
-			li {
-				border-bottom: 1px solid mix(white, $ci-color, 45%);
-				&:last-child {
-					border-bottom: none;
-				}
-			}
-		}
-
-		label {
-			display: inline-block;
-			color: mix($ci-color, white, 50%);
-
-			&:hover {
-				color: mix($ci-color, white, 30%);
-			}
-		}
-
-		input:checked ~ label {
-			color:#fff;
-		}
-	}
-
-	@include navvi-wide {
-		ul {
-
-			
-			li {
-				display: inline-block;
-				margin-right: .5em;
-				a {
-					@include border-radius(3px);
-				}
-			}
-		}
-	}
-
+body {
+	color: mix($navy, $aqua);
 }
+
+
+@include navvi-generate(navvi, 400px, right, #3f7d9f, #fff);
+
+
+
+
+
