@@ -54,3 +54,167 @@ $navvi-breakpoint:0;
 		@content;
 	}
 }
+
+
+
+
+@mixin navvi-generate($class:'navvi', $breakpoint:400px, $align:left, $bgColor:#444, $fontColor:#eaeaea, $borderRadius:3px) {
+
+
+	$cMixA: mix($fontColor, $bgColor, 20%);
+	$cMixB: mix($fontColor, $bgColor, 80%);
+
+
+	@include navvi($class, $breakpoint) {
+		
+		@include user-select;
+
+		label {
+			background: $bgColor;
+			padding: .4em .5em .2em .5em;
+			line-height: 1;
+
+			@include border-radius($borderRadius);
+
+			&:before {
+				font-size:1.2em;
+				line-height: 0;
+				vertical-align: baseline;
+			}
+		}
+
+		label, ul li a {
+			line-height:1.2;
+			vertical-align: baseline;
+		}
+
+		ul {
+			li {
+				a {
+					display:block;
+					padding: .4em .5em .2em .5em;
+					background: $bgColor;
+
+					@include transition(all .2s);
+
+					color: $cMixB;
+					&:hover {
+						background: $cMixA;
+						color: $fontColor;
+					}
+				}
+			}
+		}
+
+		
+		@include navvi-wide {
+			ul {
+				
+				@if $align == right {
+					text-align: right;
+				}
+				@if $align == center {
+					text-align: center;
+				}
+
+				
+				li {
+					display: inline-block;
+					
+
+					@if $align == left {
+						margin-right: .1em;
+					} 
+					@if $align == right {
+						margin-left: .1em;
+					}
+					@if $align == center {
+						margin: 0 .05em;
+					}
+					
+					
+
+					a {
+						@include border-radius($borderRadius);
+					}
+				}
+			}
+		}
+
+
+
+
+
+		@include navvi-narrow {
+			
+			@if $align == right {
+					text-align: right;
+				}
+				@if $align == center {
+					text-align: center;
+				}
+
+			ul {
+				@include border-radius($borderRadius);
+				@include box-shadow(0 0 .5em 0 rgba($cMixB, .4));
+
+				margin-top: .2em;
+				position: absolute;
+				
+				width:100%;
+				text-align: left;
+
+				li {
+					border-bottom: 1px solid $cMixB;
+					&:last-child {
+						border-bottom: none;
+					}
+
+					a {
+						background: $cMixA;
+						color: $cMixB;
+
+						&:hover {
+							background: $bgColor;
+							color: $fontColor;
+						}
+					}
+				}
+
+				
+			}
+
+			label {
+				display: inline-block;
+				color: $cMixB;
+				margin-bottom: .2em;
+				&:hover {
+					color: $fontColor;
+				}
+			}
+
+			input:checked ~ label {
+				color:$fontColor;
+				background: $cMixA;
+			}
+		}
+
+
+
+
+
+		@content;
+
+	}
+
+
+
+}
+
+
+
+
+
+
+
+
