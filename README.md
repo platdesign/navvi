@@ -1,16 +1,5 @@
 #Navvi#
 Create responsive navigations with this scss-mixins.
 
-##Install##
 
-
-##Use##
-
-
-
-
-##Author##
-
-- [mail@platdesign.de](mailto:mail@platdesign.de) 
-- [@platdesign](https://twitter.com/platdesign)
-
+For more information goto: [http://platdesign.github.io/navvi/](http://platdesign.github.io/navvi/)
