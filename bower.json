@@ -1,0 +1,21 @@
+{
+  "name": "navvi",
+  "version": "0.0.1",
+  "homepage": "https://github.com/platdesign/navvi",
+  "authors": [
+    "Christian Blaschke <mail@platdesign.de>"
+  ],
+  "description": "Create responsive navigations with this scss-mixins.",
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "vendor",
+    "test",
+    "tests"
+  ],
+  "dependencies":{
+	  "pd-scss":"*"
+  }
+}
