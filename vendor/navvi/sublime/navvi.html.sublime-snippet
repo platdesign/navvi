@@ -1,0 +1,15 @@
+<snippet>
+	<content><![CDATA[
+<div class="${1:navvi}">
+	<input type="checkbox" id="${1:navvi}-checkbox" />
+	<label for="${1:navvi}-checkbox"${2: class="burger"}></label>
+	<ul>
+		<li><a href="#">${3}</a></li>
+		${0}
+	</ul>
+</div>
+]]></content>
+	<tabTrigger>navvi</tabTrigger>
+	<scope>text.html</scope>
+	<description>Navvi</description>
+</snippet>

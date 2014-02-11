@@ -1,5 +1,6 @@
 {
   "name": "navvi",
+  "version": "0.0.1",
   "homepage": "https://github.com/platdesign/navvi",
   "authors": [
     "Christian Blaschke <mail@platdesign.de>"
@@ -14,16 +15,7 @@
     "test",
     "tests"
   ],
-  "dependencies": {
-    "pd-scss": "*"
-  },
-  "_release": "179aaf0935",
-  "_resolution": {
-    "type": "branch",
-    "branch": "master",
-    "commit": "179aaf09359763c7249983a87c5e35c6ad97a81d"
-  },
-  "_source": "git://github.com/platdesign/navvi.git",
-  "_target": "*",
-  "_originalSource": "navvi"
+  "dependencies":{
+	  "pd-scss":"*"
+  }
 }
