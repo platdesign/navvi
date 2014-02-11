@@ -1,0 +1,33 @@
+body {
+	//width:100%;
+}
+
+nav ul li {
+	list-style:none;
+	a {
+		display:block;
+	}
+}
+
+
+
+nav {
+	
+	&.horizontal {
+		display:table;
+		ul {
+			display:table-row;
+			li {
+				display:table-cell;
+				vertical-align:top;
+				line-height:1;
+			}
+		}
+	}
+}
+
+ul.no-list-style {
+	list-style:none;
+	padding:0;
+	margin:0;
+}

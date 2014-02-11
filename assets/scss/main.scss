@@ -1,0 +1,249 @@
+@import "../../vendor/pd-scss/pd-scss.scss";
+@import "../../vendor/navvi/navvi.scss";
+@import "./prism.scss";
+
+
+
+@include load-reset;
+@include load-block;
+@include load-breakpoints;
+@include load-page;
+@include load-font-beautifier;
+@include load-btn;
+
+$ci-color: $navy;
+
+body {
+	background: $ci-color;
+}
+h1, h2 {
+	font-weight: 100;
+}
+[ng-click] {
+	cursor: pointer;
+}
+
+%stdShadow {
+	@include box-shadow(0 0 3px 0 rgba(red, .4));
+}
+
+@include block(header, $ci-color) {
+
+
+	padding-bottom: 0;
+}
+
+
+@include block(section, #fff) {
+
+	h1 + h2 {
+		margin-top: 1em;
+	}
+
+}
+
+
+@include block(footer, darken($silver, 10%)) {
+
+	font-size: .8em;	
+	@include gradient(bottom, $ci-color, darken($ci-color, 2%));
+	color: mix($ci-color, white, 45%);
+	text-align:center;
+	p + h1 {
+		margin-top: .5em;
+	}
+	padding-bottom: 5em;
+}
+
+
+
+
+@include block(teaser) {
+	@include user-select;
+	padding: 3em 0;
+	text-align: center;
+	
+	color: mix($ci-color, white, 20%);
+	@include text-shadow(0 0 1.2em rgba( mix($ci-color, white, 40%), .7));
+
+	
+	h1 { font-size: 4.5em; color: mix($ci-color, white, 15%); }
+	h2 { font-size: 1.7em; }
+	
+	@include gradient(top, $ci-color, darken($ci-color, 2%));
+}
+
+
+
+
+
+@include btn {
+	color: mix($ci-color, white, 70%);
+	background: mix($ci-color, white, 15%);
+	cursor: pointer;
+
+	border:none;
+	
+	@include box-shadow(0 0 3px 0 rgba(white, .4));
+
+	@include transition(all .3s);
+
+	&:hover {
+		color:mix($ci-color, white, 85%);
+		@include box-shadow(0 0 23px 0 rgba(white, .4));
+	}
+	
+}
+
+@include btn(large) {
+	padding: .4em .7em 0.25em .7em;
+	margin: 0 .3em;
+	font-size: 1.1em;
+	letter-spacing: -.05em;
+	display:inline-block;
+	margin-bottom: 1em;
+
+	&:hover {
+		@include scale(1.05);
+	}
+
+	&:active {
+		background: mix($ci-color, white, 35%);
+		@include scale(1.01);
+	}
+	
+
+	.fa {
+		font-size: 1.3em;
+		vertical-align: baseline;
+		margin-right:.3em;
+		vertical-align: middle;
+	}
+}
+
+
+.getit-buttons {
+	margin-top: 2em;
+}
+
+a {
+	@include transition(color .2s);
+}
+
+nav.tabs {
+	@include user-select;
+	border-bottom: 1px solid #eaeaea;
+	margin-bottom: .7em;
+	margin-top: 1em;
+	ul {
+		list-style: none;
+		display:block;
+		li {
+			display: inline-block;
+			
+			&:last-child {
+				border-right: none;
+			}
+			a {
+				display: block;
+				padding: .3em .4em;
+				border-right: 1px solid #eaeaea;
+				color:#999;
+				&:hover, &.active {
+					color:lighten($ci-color, 60%);
+				}
+
+				
+			}
+		}
+	}
+}
+
+hr {
+	margin: 2em 0;
+}
+
+
+
+@include navvi(navvi, 400px) {
+	margin-top: 1em;
+	@include user-select;
+
+	label {
+		background: mix(white, $ci-color, 20%);
+		padding: .1em .5em .3em .5em;
+		@include border-radius(3px);
+		&:before {
+			font-size:1.4em;
+		}
+	}
+
+	ul {
+
+		li {
+			a {
+				display:block;
+				padding: .4em .5em .3em .5em;
+				background: mix(white, $ci-color, 70%);
+
+				@include transition(all .2s);
+
+				color: mix(white, $ci-color, 10%);
+				&:hover {
+					background: mix(white, $ci-color, 30%);
+					color: mix(white, $ci-color, 90%);
+				}
+			}
+		}
+	}
+
+	@include navvi-narrow {
+		
+
+		ul {
+			@include border-radius(3px);
+			@include box-shadow(0 0 13px 0 rgba(white, .4));
+
+			margin-top: .2em;
+			position: absolute;
+			
+			width:100%;
+			text-align: left;
+
+			li {
+				border-bottom: 1px solid mix(white, $ci-color, 45%);
+				&:last-child {
+					border-bottom: none;
+				}
+			}
+		}
+
+		label {
+			display: inline-block;
+			color: mix($ci-color, white, 50%);
+
+			&:hover {
+				color: mix($ci-color, white, 30%);
+			}
+		}
+
+		input:checked ~ label {
+			color:#fff;
+		}
+	}
+
+	@include navvi-wide {
+		ul {
+
+			
+			li {
+				display: inline-block;
+				margin-right: .5em;
+				a {
+					@include border-radius(3px);
+				}
+			}
+		}
+	}
+
+}

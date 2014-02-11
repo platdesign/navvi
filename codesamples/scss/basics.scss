@@ -1,0 +1,19 @@
+// Creates the class 'navvi'
+@include navvi(navvi, 500px) {
+	
+	// Styles for wide and narrow media
+	ul {
+
+	}
+
+	// Styles for wide media (> 500px)
+	@include navvi-wide {
+
+	}
+
+	// Styles for narrow media (< 500px)
+	@include navvi-narrow {
+	
+	}
+
+}

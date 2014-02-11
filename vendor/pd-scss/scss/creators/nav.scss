@@ -1,0 +1,70 @@
+	
+	@mixin nav($name:false) {
+		@if $name {
+			@include extend-package(nav, $name) {
+				@content;
+			}
+		}
+	}
+
+
+
+	@mixin nav-init {
+		
+		@include create-package(nav) {
+			ul {
+				
+				li {
+					list-style:none;
+					
+					a {
+						display:block;
+					}
+				}
+			}
+		}
+		
+		@include nav(h) {
+			ul {
+				@extend .clearfix;
+				li {
+					display:inline-block;
+				}
+				
+			}
+		}
+		
+		@include nav(h-left) {
+			ul {
+				text-align:left;
+				li {
+					margin-right:.5em;
+				}
+				
+				
+			}
+		}
+		
+		@include nav(h-right) {
+			ul {
+				text-align:right;
+				li {
+					margin-left:.5em;
+				}
+			}
+		}
+		
+		@include nav(h-center) {
+			ul {
+				text-align:center;
+				li {
+					margin: 0 .25em;
+				}
+			}
+		}
+		
+	}
+	
+	
+
+

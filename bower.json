@@ -1,0 +1,24 @@
+{
+  "name": "navvi",
+  "version": "0.0.0",
+  "homepage": "https://github.com/platdesign/navvi",
+  "authors": [
+    "Christian Blaschke <mail@platdesign.de>"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "vendor",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "pd-scss": "*",
+    "angular": "~1.2.12",
+    "navvi": "*",
+    "fastclick": "~0.6.11",
+    "jquery": "~2.1.0"
+  }
+}

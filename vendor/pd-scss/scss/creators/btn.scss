@@ -1,0 +1,101 @@
+
+
+
+	@mixin btn-setColor($color) {
+		background-color:$color;
+		//@include gradient(top, lighten($color, 5%), darken($color, 5%));
+		color:best-font-color($color);
+		border-color: darken($color, 3%);
+	}
+
+	@mixin btn($name:false, $color:false) {
+			@include extend-package(btn, $name) {
+				@if $color {
+					@include btn-setColor($color);
+				}
+				
+				@content;
+			}
+	}
+
+
+
+	@mixin btn-init {
+		
+		@include create-package(btn) {
+			
+			@include border-radius(3px);
+			border-width:1px;
+			border-style:solid;
+			border-color:#eaeaea;
+
+			background:#fff;
+
+			font-size:1em;
+			font-weight:normal;
+
+			padding: .3em .3em;
+			line-height:1;
+			margin:0;
+			
+			outline:none;
+			color:inherit;
+			cursor:default;
+			
+			white-space:nowrap;
+
+			&[disabled] {
+				opacity:.5;
+				pointer-events: none;
+			}
+			@include font-smoothing;
+		}
+		
+		a.btn {
+			display:inline-block;
+		}
+		
+		@include btn(bar) {
+			padding:0!important;
+			background:transparent;
+			
+			@include display-inline-flex;
+			overflow:hidden;
+		
+			button {
+				@include flex(1 1 auto);
+				@include border-radius(0);
+		
+				border-left:none;
+				border-top:none;
+				border-bottom:none;
+				
+				&:last-child {
+					border-right:none;
+				}
+			}
+		
+			&:hover, &.active {
+				background:transparent;
+			}
+		
+		}
+		
+		@include btn(bar-stretch) {
+			@include display-flex;
+		}
+
+		/* DEFAULT Buttons */
+		
+
+
+		/* btn-large */
+		@include btn(large) {
+			font-size:1.2em;
+		}
+		
+	}
+	
+	
+
+

@@ -1,0 +1,304 @@
+
+@mixin prefix($key, $val, $prefixes, $prefixless:true) {
+	
+	@each $prefix in $prefixes {
+		-#{$prefix}-#{$key}: $val;
+	}
+	@if $prefixless {
+		#{$key}:$val;
+	}
+	
+}
+
+
+
+
+
+@mixin clearfix {
+    zoom:1;
+    &:before, &:after {
+        content: "\0020";
+        display: block;
+        height: 0px;
+        overflow: hidden;
+    }
+    &:after {
+        clear: both;
+    }
+}
+
+
+@mixin animation ($name, $duration: 300ms, $delay: 0, $ease: ease) {
+	@include prefix(animation, $name $duration $delay $ease, webkit moz ms);
+}
+
+@mixin animation-property($value) {
+	@include prefix(animation-property, $value, webkit moz o);
+}
+
+@mixin appearance($value){
+	@include prefix(appearance, $value, webkit moz);
+}
+
+@mixin background-clip($value) {
+	@include prefix(background-clip, $value, webkit moz);
+}
+
+
+@mixin border-radius ($value) {
+	@include prefix(border-radius, $value, webkit moz);
+}
+
+
+@mixin box-shadow ($value) {
+  @include prefix(box-shadow, $value, webkit moz);
+}
+
+
+@mixin box-sizing($value: border-box) {
+	@include prefix(box-sizing, $value, webkit moz);
+}
+
+@mixin ellipsis() {
+	@include prefix(text-overflow, ellipsis, o);
+    overflow:hidden;              /* don't show excess chars */
+    white-space:nowrap;           /* force single line */
+}
+
+
+@mixin gradient($direction: top, $from: #ccc, $to: #aaa) {
+
+	// Provide a fallback-color
+	background-color: $from;
+
+	// Cross-browser linear-gradients
+	background-image: -webkit-linear-gradient($direction, $from, $to);
+	background-image:    -moz-linear-gradient($direction, $from, $to);
+	background-image:     -ms-linear-gradient($direction, $from, $to);
+	background-image:      -o-linear-gradient($direction, $from, $to);
+	background-image:		  linear-gradient($direction, $from, $to);
+}
+
+@mixin linear-gradient($value) {
+	background-image: -webkit-linear-gradient($value);
+	background-image:    -moz-linear-gradient($value);
+	background-image:     -ms-linear-gradient($value);
+	background-image:      -o-linear-gradient($value);
+	background-image:		  linear-gradient($value);
+}
+
+@mixin opacity($value: 1) {
+	@include prefix(opacity, $value, webkit moz);
+}
+
+@mixin text-shadow ($string: 0 1px 3px rgba(0, 0, 0, 0.25)) {
+	text-shadow: $string;
+}
+
+@mixin transform($value) {
+	@include prefix(transform, $value, webkit o ms);
+}
+
+@mixin transform-origin ($x:center, $y:center) {
+	@include prefix(transform-origin, $x $y, webkit moz o ms);
+}
+
+@mixin scale($value) {
+	@include transform(scale($value));
+	
+}
+
+@mixin rotate($value) {
+	@include transform(rotate($value));
+}
+
+@mixin skew($valA, $valB) {
+	@include transform(skew($valA, $valB));
+}
+
+@mixin translate($x, $y:0) {
+	@include transform(translate($x, $y));
+}
+
+
+
+@mixin transition($value) {
+	@include prefix(transition, $value, webkit moz ms o);
+}
+
+@mixin transition-duration($value) {
+	@include prefix(transition-duration, $value, webkit moz o);
+}
+
+
+
+@mixin user-select($value: none) {
+	@include prefix(user-select, $value, webkit moz ms);
+}
+
+@mixin placeholder {
+    ::-webkit-input-placeholder {
+        @content;
+    }
+
+    :-moz-placeholder { /* Firefox 18- */
+        @content;
+    }
+
+    ::-moz-placeholder {  /* Firefox 19+ */
+        @content;
+    }
+
+    :-ms-input-placeholder {
+        @content;
+    }
+}
+
+
+@mixin display-inline-flex {
+	display: -webkit-inline-box;
+	display: -moz-inline-box;
+	display: -ms-inline-flexbox;
+	display: -webkit-inline-flex;
+	display: inline-flex;
+}
+
+@mixin display-flex {
+	display: -webkit-box;
+	display: -moz-box;
+	display: -ms-flexbox;
+	display: -webkit-flex;
+	display: flex;
+}
+
+@mixin flex($value) {
+	@include prefix(flex, $value, webkit moz ms);
+}
+
+@mixin flex-direction($value) {
+	@include prefix(flex-direction, $value, webkit);
+}
+
+
+
+
+@mixin class-beginns-with($name) {
+	[class*="#{$name}"] {
+		@content;
+	}
+}
+
+@mixin and-class-beginns-with($name) {
+	[class*="#{$name}"] {
+		@content;
+	}
+}
+
+
+@mixin wildcard($name) {
+	[class*="#{$name}-"], .#{$name} {
+		@content;
+	}
+}
+
+@mixin parent-wildcard($name) {
+	&[class*="#{$name}-"] {
+		@content;
+	}
+}
+
+
+@mixin extend-wildcard($name, $addon) {
+	&[class*="#{$name}-#{$addon}"] {
+		@content;
+	}
+}
+
+
+
+@mixin font-smoothing($value:antialiased) {
+	@include prefix(font-smoothing, $value, webkit moz ms, false);
+	-moz-osx-font-smoothing: grayscale;
+}
+
+
+@mixin hyphens($value:auto) { 
+	// none | manual | auto  
+	@include prefix(hyphens, $value, moz ms o, false);
+}
+
+@mixin text-rendering($value:optimizeLegibility) {
+	@include prefix(text-rendering, $value, moz ms o);
+}
+
+
+@function brightness($color) {
+	$r: red($color);
+	$g: green($color);
+	$b: blue($color);
+	
+	@return (0.299*$r + 0.587*$g + 0.114*$b) / 255 * 100;
+}
+
+
+@function best-font-color($backgroundColor) {
+	
+	$r: red($backgroundColor);
+	$g: green($backgroundColor);
+	$b: blue($backgroundColor);
+	
+	$lightness:lightness($backgroundColor);
+
+	$saturation:saturation($backgroundColor);
+	$brightness:brightness($backgroundColor);
+	$hue:hue($backgroundColor);
+	
+	@if $backgroundColor == grayscale($backgroundColor) {
+		
+		@if $brightness < 50 {
+			@return mix(#fff, hsl($hue, $saturation, 100-$brightness), 80%);
+		} @else {
+			@return mix(#000, hsl($hue, $saturation, $brightness), 58%);
+		}
+		
+	}@else{
+		@if $brightness < 50 {
+			@return mix(#fff, hsl($hue, $saturation, 100-$brightness), 80%);
+		} @else {
+			@return saturate(mix(#000, hsl($hue, $saturation, $brightness), 58%), 20%);
+		}
+	}
+}
+
+
+
+
+
+
+
+
+@function package-placeholder($name) {
+	@return "%package-#{$name}";
+}
+
+@mixin create-package($name) {
+	[class^="#{$name}"], [class*=" #{$name}"], #{package-placeholder($name)} {
+		@content;
+	}
+}
+
+@mixin extend-package($package, $name:false) {
+	@if $name{
+		.#{$package}-#{$name}, [class^="#{$package}-#{$name}"], [class*=" #{$package}-#{$name}"] {
+			@extend #{package-placeholder($name)};
+			@content;
+		}
+	} @else {
+		@include create-package($package) {
+			@content;
+		}
+	}
+}
+
+
+

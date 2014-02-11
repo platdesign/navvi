@@ -1,0 +1,27 @@
+
+@mixin block-setColor($color) {
+	background-color:$color;
+	color:best-font-color($color);
+}
+
+@mixin block($name, $color:false) {
+
+	@include extend-package(block, $name) {
+		@if $color {
+			@include block-setColor($color);
+		}
+		
+		@content;
+	}
+
+}
+
+
+
+@mixin block-init {
+	
+	@include create-package(block) {
+		@include block-setColor(#fff);
+		padding: 1em 0;
+	}
+}

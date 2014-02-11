@@ -1,0 +1,31 @@
+{
+  "name": "pd-scss",
+  "homepage": "https://github.com/platdesign/pd-scss",
+  "authors": [
+    "platdesign"
+  ],
+  "description": "a bunch of scss-helpers",
+  "keywords": [
+    "scss",
+    "css"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "vendor",
+    "test",
+    "tests"
+  ],
+  "_release": "e112480d6e",
+  "_resolution": {
+    "type": "branch",
+    "branch": "master",
+    "commit": "e112480d6ef27ff2bb138c8525ac99eec7d4683d"
+  },
+  "_source": "git://github.com/platdesign/pd-scss.git",
+  "_target": "*",
+  "_originalSource": "pd-scss",
+  "_direct": true
+}

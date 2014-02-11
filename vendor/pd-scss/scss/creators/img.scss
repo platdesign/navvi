@@ -1,0 +1,39 @@
+	
+	@mixin img($name:false) {
+		@if $name {
+			@include extend-package(img, $name) {
+				@content;
+			}
+		}
+	}
+
+
+
+	@mixin img-init {
+		
+		@include create-package(img) {
+			display:block;
+		}
+		
+		
+		@include img(fit-width) {
+			width:100%;
+		}
+		
+		@include img(frame-photo) {
+			border:.6em solid #fff;
+			@include box-shadow( default-box-shadow() );
+		}
+		
+		@include img(rotate-bit-left) {
+			@include rotate(-1deg);
+		}
+		
+		@include img(rotate-bit-right) {
+			@include rotate(1deg);
+		}
+	}
+	
+	
+
+

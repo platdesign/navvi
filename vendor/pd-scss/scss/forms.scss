@@ -1,0 +1,211 @@
+$form-el-outline-color:#3399FF;
+
+%form-el {
+	//font-size:13px;
+	line-height:normal;
+	-webkit-appearance: none;
+}
+
+%form-el-fullwidth {
+	display:block;
+	width:100%;
+}
+
+%form-el-border {
+	@include border-radius(5px);
+	border: 1px solid #eaeaea;
+}
+
+%form-el-padding {
+	padding:.3em .4em;
+}
+
+%form-el-margin {
+	margin-right:.3em;
+}
+
+%form-el-bg {
+	background-color:#fff;
+}
+
+%form-el-outline {
+	outline:none;
+	
+	/*
+	&:focus {
+		@include transition(box-shadow .2s);
+		@include box-shadow(#{
+			0 0 5px 0 transparentize($form-el-outline-color, .5),
+			0 0 1px 0 transparentize($form-el-outline-color, .1)
+		});
+	}
+	*/
+}
+
+
+
+
+
+
+%form-el-text {
+	@extend %form-el;
+	@extend %form-el-fullwidth;
+	@extend %form-el-border;
+	@extend %form-el-padding;
+	@extend %form-el-outline;
+	@extend %form-el-bg;
+	cursor:text;
+}
+
+%form-el-textarea {
+	@extend %form-el-text;
+	@extend %form-el-outline;
+	@extend %form-el-bg;
+	
+	min-height:6em;
+	line-height:1.3;
+	resize:vertical;
+	cursor:text;
+}
+
+%form-el-select {
+	@extend %form-el;
+	@extend %form-el-border;
+	@extend %form-el-fullwidth;
+	@extend %form-el-outline;
+	@extend %form-el-padding;
+	@extend %form-el-bg;
+	
+	@include appearance(none);
+}
+
+%form-el-radio {
+	@extend %form-el;
+	@extend %form-el-margin;
+}
+
+%form-el-checkbox {
+	@extend %form-el;
+	@extend %form-el-margin;
+}
+
+%form-el-label {
+	font-weight:600;
+}
+
+%form-el-button {
+	@extend %form-el-padding;
+	@extend %form-el-border;
+	//@extend %form-el-outline;
+	@extend %form-el-bg;
+}
+
+
+
+
+
+
+
+
+
+
+
+// Text
+input[type=text], input[type=password], input[type=email] {
+	@extend %form-el-text;
+}
+
+// Textarea
+textarea {
+	@extend %form-el-textarea;
+}
+
+// Select
+select {
+	@extend %form-el-select;
+}
+
+// Radio
+input[type="radio"] {
+	@extend %form-el-radio;
+}
+
+// Checkbox
+input[type="checkbox"] {
+	@extend %form-el-checkbox;
+}
+
+
+
+input[type="search"] {
+	@extend %form-el;
+	@extend %form-el-outline;
+	@extend %form-el-border;
+	@extend %form-el-fullwidth;
+	cursor:text;
+	
+	@include border-radius(1em);
+	padding: .1em 0;
+	text-indent:.3em;
+}
+
+.form-el {
+	@extend %form-el;
+	
+	margin-bottom:.9em;
+	
+	label {
+		@extend %form-el-label;
+		
+		&+input, &+select, &+textarea {
+			margin-top:.1em;
+		}
+		&+label {
+			margin-left:1em;
+		}
+	}
+	
+}
+
+fieldset {
+	@extend %form-el;
+	@extend %form-el-fullwidth;
+	@extend %form-el-padding;
+	@extend %form-el-border;
+	@extend %form-el-bg;
+	
+	position:relative;
+	top:1.3em;
+	left:-1px;
+	
+	margin-bottom:1.9em;
+	legend {
+		position:absolute;
+		top:-1.3em;
+		left:0;
+		z-index:99999;
+		@extend %form-el-label;
+	}
+	
+	
+}
+
+
+
+.input-frame {
+	@extend %form-el-fullwidth;
+	@extend %form-el-padding;
+	@extend %form-el;
+	@extend %form-el-border;
+	margin:0;
+}
+
+
+
+
+form {
+	@include wildcard(hint) {
+		margin-bottom:.9em;
+	}
+}
+

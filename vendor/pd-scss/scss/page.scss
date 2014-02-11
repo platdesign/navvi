@@ -1,0 +1,35 @@
+
+@mixin page($width) {
+	@if $width > 0 {
+		width:$width;
+	} @else {
+		width:100%;
+	}
+}
+
+@mixin page-init {
+	.page {
+	
+		margin: 0 auto;
+		
+	
+		@each $breakpoint in breakpoints() {
+			$index:nth($breakpoint, 1);
+			
+			@include breakpoint($index) {
+			
+				@if $index == 1 {
+					padding:0 $grid-spacer;
+				}
+			
+				$width:nth($breakpoint, 2);
+			
+				@include page($width);
+			
+			}
+		}
+	
+	}
+	
+}
+

@@ -1,0 +1,259 @@
+$flyout-arrow-width:11px;
+
+
+@mixin flyout-arrow-left {
+	&:before {
+		border-top-color: transparent;
+		border-bottom-color: transparent;
+		border-left-color: transparent;
+	}
+}
+
+@mixin flyout-arrow-right {
+	&:before {
+		border-top-color: transparent;
+		border-bottom-color: transparent;
+		border-right-color: transparent;
+	}
+}
+
+@mixin flyout-arrow-top {
+	&:before {
+		border-left-color: transparent;
+		border-right-color: transparent;
+		border-top-color: transparent;
+	}
+}
+
+@mixin flyout-arrow-bottom {
+	&:before {
+		border-left-color: transparent;
+		border-right-color: transparent;
+		border-bottom-color: transparent;
+	}
+}
+
+
+%flyout-left {
+	right:100%;
+	margin-right:$flyout-arrow-width * 1.3;
+
+	&:before {
+		left:100%;
+	}
+}
+
+%flyout-right {
+	left:100%;
+	margin-left:$flyout-arrow-width * 1.3;
+
+	&:before {
+		right:100%;
+	}
+}
+
+%flyout-top {
+	bottom:100%;
+	margin-bottom:$flyout-arrow-width * 1.3;
+
+	&:before {
+		top:100%;
+	}
+}
+
+%flyout-bottom {
+	top:100%;
+	margin-top:$flyout-arrow-width * 1.3;
+
+	&:before {
+		bottom:100%;
+	}
+}
+
+%flyout-to-left {
+	right:0-$flyout-arrow-width/2;
+
+	&:before {
+		right:$flyout-arrow-width;
+	}
+}
+
+%flyout-to-right {
+	left:0-$flyout-arrow-width/2;
+
+	&:before {
+		left:$flyout-arrow-width;
+	}
+}
+
+%flyout-to-bottom {
+	top:0-$flyout-arrow-width;
+
+	&:before {
+		top:$flyout-arrow-width;
+	}
+}
+
+%flyout-to-top {
+	bottom:0-$flyout-arrow-width;
+
+	&:before {
+		bottom:$flyout-arrow-width;
+	}
+}
+
+
+
+
+
+%flyout {
+	$width: 200px;
+	$bgColor:white;
+
+	position:absolute;
+	z-index:999;
+	
+	
+	min-width:$width;
+	
+	
+	padding: .5em;
+	
+	@include box-shadow(0 0 $flyout-arrow-width*2 0 rgba(black, .4));
+	@include border-radius(5px);
+	text-align:left;
+
+	&:before {
+		content:"";
+		position:absolute;
+		border-width: $flyout-arrow-width;
+		border-style: solid;
+	}
+}
+
+@mixin flyout-color($color:white) {
+	background-color:$color;
+	&:before {
+		border-color:$color;
+	}
+}
+
+
+
+
+
+
+@mixin flyout-tl($color:white) {
+	@extend %flyout;
+	
+	@include flyout-color($color);
+
+	@extend %flyout-top;
+	@extend %flyout-to-left;
+	@include flyout-arrow-bottom;
+
+	@content;
+}
+
+@mixin flyout-tr($color:white) {
+	@extend %flyout;
+
+	@include flyout-color($color);
+
+	@extend %flyout-top;
+	@extend %flyout-to-right;
+	@include flyout-arrow-bottom;
+
+	@content;
+}
+
+@mixin flyout-bl($color:white) {
+	@extend %flyout;
+
+	@include flyout-color($color);
+
+	@extend %flyout-bottom;
+	@extend %flyout-to-left;
+	@include flyout-arrow-top;
+
+	@content;
+}
+
+@mixin flyout-br($color:white) {
+	@extend %flyout;
+
+	
+
+	@extend %flyout-bottom;
+	@extend %flyout-to-right;
+	@include flyout-arrow-top;
+
+	@content;
+}
+
+@mixin flyout-lt($color:white) {
+	@extend %flyout;
+	
+	@include flyout-color($color);
+
+	@extend %flyout-left;
+	@extend %flyout-to-top;
+	@include flyout-arrow-right;
+
+	@content;
+}
+
+@mixin flyout-lb($color:white) {
+	@extend %flyout;
+
+	@include flyout-color($color);
+
+	@extend %flyout-left;
+	@extend %flyout-to-bottom;
+	@include flyout-arrow-right;
+
+	@content;
+}
+
+@mixin flyout-rt($color:white) {
+	@extend %flyout;
+
+	@include flyout-color($color);
+
+	@extend %flyout-right;
+	@extend %flyout-to-top;
+	@include flyout-arrow-left;
+
+	@content;
+}
+
+@mixin flyout-rb($color:white) {
+	@extend %flyout;
+
+	@include flyout-color($color);
+
+	@extend %flyout-right;
+	@extend %flyout-to-bottom;
+	@include flyout-arrow-left;
+
+	@content;
+}
+
+
+
+
+
+
+
+
+@mixin flyout-create-all {
+	.flyout-tl { @include flyout-tl }
+	.flyout-tr { @include flyout-tr; }
+	.flyout-bl { @include flyout-bl; }
+	.flyout-br { @include flyout-br; }
+
+	.flyout-lt { @include flyout-lt }
+	.flyout-lb { @include flyout-lb; }
+	.flyout-rt { @include flyout-rt; }
+	.flyout-rb { @include flyout-rb; }
+}

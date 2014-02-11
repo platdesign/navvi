@@ -1,0 +1,84 @@
+
+$grid-spacer:1em;
+@function grid-setSpacer($spacer) {
+	$grid-spacer:$spacer;
+	@return $grid-spacer;
+}
+
+
+
+@mixin grid-col($a, $b) {
+	
+	.col-#{$a}-#{$b} {
+		
+		width:percentage($a/$b);
+		//padding: 0 ($grid-spacer*2)/($b + 1);
+	}
+	
+}
+
+@mixin grid-cols($anz) {
+	$i:1;
+	@while $i <= $anz {
+	  
+		@include grid-col($i, $anz);
+	  
+	  $i: $i + 1;
+	}
+	
+}
+
+@mixin make-cols($anz) {
+	$i:1;
+	@while $i <= $anz {
+	  
+		@include grid-cols($i);
+	  
+	  $i: $i + 1;
+	}
+}
+
+
+@mixin grid-init {
+	.row {
+		@extend .clearfix;
+		margin: 0 0-$grid-spacer 0 0-$grid-spacer;
+		padding-bottom:$grid-spacer;
+	
+
+		@include wildcard(col) {
+			float:left;
+			padding: 0 $grid-spacer;
+		}
+
+		@include make-cols(12);
+	
+	
+	
+		@include breakpoint(1) {
+			padding-bottom:0;
+			@include wildcard(col) {
+				width:100%;
+				padding-bottom:$grid-spacer;
+				
+			}
+		
+		}
+	
+		@include breakpoint(2) {
+			padding-bottom:0;
+			@include wildcard(col) {
+				width:100%;
+				padding-bottom:$grid-spacer;
+				
+			}
+		
+		}
+	
+	
+	}
+}
+
+
+
+

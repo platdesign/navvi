@@ -1,0 +1,57 @@
+$media-breakpoints:(0);
+
+@function setBreakpoints($list) {
+	$media-breakpoints:$list;
+	@return $media-breakpoints;
+}
+
+@mixin breakpoint($index) {
+	
+	$min:breakpoint-get-minWidth($index);
+	$max:breakpoint-get-maxWidth($index);
+	
+	@if $index > length($media-breakpoints) {
+		@media screen and (min-width: $max) {
+			@content;
+		}
+	} @else {
+		@media screen and (min-width: $min) and (max-width:$max) {
+			@content;
+		}
+	}
+}
+
+@function breakpoint-get-minWidth($index) {
+	$length:length($media-breakpoints);
+	
+	@if $index > $length {
+		$index:$length;
+	}
+	@if $index == 1 {
+		@return 0;
+	} @else {
+		@return nth($media-breakpoints, ($index - 1));
+	}
+	
+}
+
+@function breakpoint-get-maxWidth($index) {
+	$length:length($media-breakpoints);
+	
+	@if $index > $length {
+		$index:$length;
+	}
+	
+	@return nth($media-breakpoints, $index);
+}
+
+@function breakpoints() {
+	$list:();
+	@for $i from 1 through length($media-breakpoints) {
+		$list:append($list, ($i, breakpoint-get-minWidth($i), breakpoint-get-maxWidth($i)));
+	}
+	$i:length($media-breakpoints) + 1;
+	$list:append($list, ($i, breakpoint-get-minWidth($i), breakpoint-get-maxWidth($i)));
+	
+	@return $list;
+}

@@ -1,0 +1,56 @@
+
+/**
+ * Navvi - Responsive Navigation
+ * http://platdesign.github.com/navvi
+ *
+ * @author Christian Blaschke - @platdesign
+ * @version 0.0.1
+ */	
+
+
+
+
+
+$navvi-breakpoint:0;
+
+
+@mixin navvi($class:'navvi', $breakpoint:400px) {
+	$navvi-breakpoint: $breakpoint;
+
+	.#{$class} {
+		position: relative;
+		input[type='checkbox'] { display:none; }
+		label { cursor: pointer;  /* user select */ }
+		label.burger:before {
+			content:'☰';
+		}
+		
+
+		/* Wide */
+		@media screen and (min-width: $navvi-breakpoint) {
+			label { display:none; }
+		}
+
+		/* Narrow */
+		@media screen and (min-width: 0) and (max-width: $navvi-breakpoint) {
+			ul { overflow:scroll; max-height: 0; visibility: hidden; }
+			input[type='checkbox']:checked ~ ul { max-height: 500px; visibility: visible;}
+		}
+
+		@content;
+	}
+}
+
+
+@mixin navvi-narrow {
+	@media screen and (min-width: 0) and (max-width: $navvi-breakpoint) {
+		@content;
+	}
+}
+
+
+@mixin navvi-wide {
+	@media screen and (min-width: $navvi-breakpoint) {
+		@content;
+	}
+}

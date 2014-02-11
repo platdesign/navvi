@@ -1,1 +1,147 @@
-index.html
+<!DOCTYPE html>
+<html ng-app="app">
+	<head>
+		<title>Navvi - Responsive Navigation</title>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	    <meta name="description" content="Demo project">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+
+		<link rel="stylesheet" type="text/css" href="assets/css/main.css">
+		<link rel="stylesheet" type="text/css" href="assets/css/examples.css">
+		<link rel="stylesheet" type="text/css" href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css">
+	</head>
+	<body>
+		
+
+		<header class="block-header">
+			
+			<div class="page">
+
+				
+
+
+			</div>
+			
+			<div class="block-teaser">
+				<div class="page">
+					<h1>Navvi</h1>
+					<h2>SCSS-Mixins for responsive Navigations</h2>
+
+					<div class="getit-buttons">
+						<a href="https://github.com/platdesign/navvi" class="btn-large btn-github"><i class="fa fa-github"></i> See on GitHub</a>
+						<a href="https://github.com/platdesign/navvi/archive/master.zip" class="btn-large btn-zip"><i class="fa fa-download"></i> Download Zip</a>
+					<br>
+
+						<a href="https://twitter.com/share" 
+					class="twitter-share-button" 
+					data-text="Navvi - SASS-Mixins for responsive navigations" 
+					data-count="none"
+					data-via="platdesign">Tweet</a>
+					</div>
+					
+					
+
+				</div>
+			</div>
+
+		</header>
+
+		<section class="block-section">
+			<div class="page">
+				
+	
+
+				<h1>How to use</h1>
+
+
+				<nav class="tabs" ng-init="codesample = 'html'">
+
+					<ul>
+					    <li><a ng-click="codesample = 'html'" ng-class="{active:codesample == 'html'}">HTML</a></li>
+					    <li><a ng-click="codesample = 'scss'" ng-class="{active:codesample == 'scss'}">SCSS</a></li>
+					    <li><a ng-click="codesample = 'preview'" ng-class="{active:codesample == 'preview'}">Preview</a></li>
+					</ul>
+			    
+				</nav>
+
+				<div ng-switch="codesample">
+					<div ng-switch-when="html">
+						
+						<h2>HTML</h2>
+						<p>
+							Create a Navvi-Nav with following HTML-Code.
+						</p>
+
+
+						<code-block 
+							language="markup" 
+							file="codesamples/html/basics.html"
+						></code-block>
+
+						
+					</div>
+
+					<div ng-switch-when="scss">
+						
+						<h2>SCSS</h2>
+						<p>
+							To create the css-code for a Navvi-Nav use the three following SCSS-Mixins. 
+						</p>
+
+						<code-block 
+							language="css" 
+							file="codesamples/scss/basics.scss"
+						></code-block>
+
+					</div>
+
+					<div ng-switch-when="preview">
+						
+						<nav class="navvi">
+
+							<input type="checkbox" id="navvi-checkbox" />
+							<label for="navvi-checkbox" class="burger"></label>
+							<ul>
+							    <li><a href="">About</a></li>
+							    <li><a href="">Contact</a></li>
+							    <li><a href="">Docs</a></li>
+							    <li><a href="">Imprint</a></li>
+							</ul>
+					    
+						</nav>
+					</div>
+
+				</div>
+
+			
+
+				
+
+				
+
+			</div>
+		</section>
+
+		
+
+		<footer class="block-footer">
+			
+			<div class="page">
+				<h1>License</h1>
+				<p>This project is under the MIT license.</p>
+
+				<h1>Contributors</h1>
+				<p>This is a project by <a href="http://platdesign.de">platdesign.de</a></p>
+				<br>
+				<a href="https://twitter.com/platdesign" class="twitter-follow-button" data-show-count="false" data-size="large">Follow @platdesign</a>
+			</div>
+
+		</footer>
+
+	</body>
+	<script type="text/javascript" src="assets/js/app.min.js"></script>
+	<script type="text/javascript" src="assets/js/prism.js" data-manual></script>
+	
+
+</html>

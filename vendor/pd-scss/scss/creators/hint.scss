@@ -1,0 +1,65 @@
+
+
+
+	@mixin hint-setColor($color) {
+		$background: mix(#fff, $color, 92%);
+		$fontColor: best-font-color($background);
+		
+		border-color: darken($background, 20%);
+		background-color: $background;
+		color: $fontColor;
+	}
+
+	@mixin hint($name, $color:false) {
+	
+		@include extend-package(hint, $name) {
+			@if $color {
+				@include hint-setColor($color);
+				
+				.icon {
+					color:mix(#444, $color, 20%);
+				}
+				
+			}
+			
+			@content;
+		}
+	
+	}
+
+
+
+	@mixin hint-init {
+		
+		@include create-package(hint) {
+			@extend .clearfix;
+	
+			border-width:1px;
+			border-style:solid;
+			margin-top:.5em;
+			margin-bottom:.5em;
+			line-height:1.4;
+
+	
+			@include border-radius(6px);
+			padding:.8em 1.2em .7em 1.2em;
+
+	
+	
+			.icon {
+				float:left;
+				vertical-align:top;
+				width:1.3em;
+				font-size:3.3em;
+				text-align:center;
+				line-height:1;
+				padding: 0 .3em 0 0;
+
+			}
+		}
+		
+	}
+	
+	
+
+

@@ -1,0 +1,22 @@
+{
+  "name": "pd-scss",
+  "version": "0.0.1",
+  "homepage": "https://github.com/platdesign/pd-scss",
+  "authors": [
+    "platdesign"
+  ],
+  "description": "a bunch of scss-helpers",
+  "keywords": [
+    "scss",
+    "css"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "vendor",
+    "test",
+    "tests"
+  ]
+}

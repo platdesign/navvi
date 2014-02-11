@@ -1,0 +1,14 @@
+{
+  "name": "navvi",
+  "homepage": "https://github.com/platdesign/navvi",
+  "_release": "a6c20fd727",
+  "_resolution": {
+    "type": "branch",
+    "branch": "master",
+    "commit": "a6c20fd727a713ee9e97c2c241c67915c90b0f1a"
+  },
+  "_source": "git://github.com/platdesign/navvi.git",
+  "_target": "*",
+  "_originalSource": "navvi",
+  "_direct": true
+}
