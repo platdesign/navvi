@@ -177,7 +177,10 @@ $navvi-breakpoint:0;
 			input:checked + label {
 				color:$fontColor;
 				background: $cMixA;
-				border-bottom: 1px solid $cMixB;
+				
+				& + ul {
+					border-top: 1px solid $cMixB;
+				}
 			}
 		}
 
